@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Memory Game</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div id="colors-container"></div>
+    <div id="color-display"></div>
+
+    <div id="error-message">
+        <p>You lost! Sorry, you made a mistake in remembering the color.</p>
+        <button class="btn-retry" onclick="retryGame()">Try Again</button>
+        <button class="btn-main-menu" onclick="window.location.href = 'index.html';">Back to Main Menu</button>
+    </div>
+
+    <audio id="color-sound" preload="auto"></audio> <!-- Color sounds -->
+    
+    <script src="game.js"></script>
+    <!-- Copyright footer -->
+    <footer>
+        <p>&copy; 2025 bayazid.k.project. All rights reserved.</p>
+    </footer>
+</body>
+</html>

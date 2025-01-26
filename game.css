@@ -1,0 +1,126 @@
+/* استيراد الخط من Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif; /* استخدام الخط الذي تم استيراده */
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin: 0;
+    color: #333;
+    position: relative;
+}
+
+#colors-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.color-box {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 8px;
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* تأثير عند التمرير على المربعات */
+.color-box:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* تأثير عند الضغط على المربع */
+.color-box:active {
+    transform: scale(0.9);
+}
+
+/* عرض اسم اللون في المنتصف */
+#color-display {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* تصميم رسالة الخطأ */
+#error-message {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    text-align: center;
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+/* أنيميشن الرسالة */
+@keyframes shake {
+    0% { transform: translateX(-50%) rotate(0); }
+    25% { transform: translateX(-60%) rotate(-5deg); }
+    50% { transform: translateX(-50%) rotate(0); }
+    75% { transform: translateX(-40%) rotate(5deg); }
+    100% { transform: translateX(-50%) rotate(0); }
+}
+
+/* تصميم الأزرار */
+.btn-retry, .btn-main-menu {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+/* زر اللعب مرة أخرى */
+.btn-retry {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-retry:hover {
+    background-color: #45a049;
+}
+
+/* زر العودة للصفحة الرئيسية */
+.btn-main-menu {
+    background-color: #007BFF;
+    color: white;
+}
+
+.btn-main-menu:hover {
+    background-color: #0056b3;
+}
+/* Copyright Footer */
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
