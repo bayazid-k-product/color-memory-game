@@ -34,9 +34,6 @@ function displaySequence() {
         document.body.style.backgroundColor = colorSequence[index];
         document.getElementById('color-display').innerHTML = colorSequence[index];
 
-        // تشغيل الصوت عند عرض اللون
-        playColorSound(colorSequence[index]);
-        
         index++;
 
         if (index === colorSequence.length) {
@@ -46,42 +43,6 @@ function displaySequence() {
             }, 1000);
         }
     }, 1000); // عرض كل لون لمدة ثانية
-}
-
-function playColorSound(color) {
-    const sound = document.getElementById('color-sound');
-
-    // تحديد مسار الصوت بناءً على اللون
-    switch(color) {
-        case "red":
-            sound.src = "red.mp3"; // ضع المسار الصحيح هنا
-            break;
-        case "green":
-            sound.src = "green.mp3";
-            break;
-        case "blue":
-            sound.src = "blue.mp3";
-            break;
-        case "yellow":
-            sound.src = "yellow.mp3";
-            break;
-        case "purple":
-            sound.src = "purple.mp3";
-            break;
-        case "orange":
-            sound.src = "orange.mp3";
-            break;
-        case "pink":
-            sound.src = "pink.mp3";
-            break;
-        case "cyan":
-            sound.src = "cyan.mp3";
-            break;
-        default:
-            sound.src = "";
-    }
-
-    sound.play();  // تشغيل الصوت
 }
 
 function showColors() {
@@ -120,9 +81,6 @@ function shuffleArray(array) {
 function playerClick(event) {
     const clickedColor = event.target.style.backgroundColor;
     playerSequence.push(clickedColor);
-
-    // تشغيل الصوت عند اختيار اللون
-    playColorSound(clickedColor);
 
     // التحقق من تطابق اللون
     if (playerSequence[playerSequence.length - 1] !== colorSequence[playerSequence.length - 1]) {
