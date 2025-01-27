@@ -3,19 +3,8 @@ let colorSequence = [];
 let playerSequence = [];
 let currentLevel = 0;
 
-const soundPaths = {
-    red: "red.mp3",
-    green: "green.mp3",
-    blue: "blue.mp3",
-    yellow: "yellow.mp3",
-    purple: "purple.mp3",
-    orange: "orange.mp3",
-    pink: "pink.mp3",
-    cyan: "cyan.mp3",
-};
-
 // عند تحميل الصفحة تبدأ اللعبة تلقائيًا
-window.onload = function () {
+window.onload = function() {
     startGame();
 };
 
@@ -35,54 +24,95 @@ function nextRound() {
 }
 
 function displaySequence() {
-    document.getElementById("colors-container").innerHTML = "";
-    document.getElementById("color-display").innerHTML = "";
-    let delay = 0;
+    // إخفاء الألوان الحالية
+    document.getElementById('colors-container').innerHTML = "";
+    document.getElementById('color-display').innerHTML = "";
 
-    colorSequence.forEach((color, index) => {
-        setTimeout(() => {
-            document.body.style.backgroundColor = color;
-            document.getElementById("color-display").innerHTML = color;
-            playColorSound(color);
-        }, delay);
+    let index = 0;
+    // عرض الألوان بتغيير الخلفية مع اسم اللون في النص
+    const interval = setInterval(() => {
+        document.body.style.backgroundColor = colorSequence[index];
+        document.getElementById('color-display').innerHTML = colorSequence[index];
 
-        delay += 1000;
-    });
+        // تشغيل الصوت عند عرض اللون
+        playColorSound(colorSequence[index]);
+        
+        index++;
 
-    setTimeout(showColors, delay + 500);
+        if (index === colorSequence.length) {
+            clearInterval(interval);
+            setTimeout(() => {
+                showColors();
+            }, 1000);
+        }
+    }, 1000); // عرض كل لون لمدة ثانية
 }
 
 function playColorSound(color) {
-    const sound = document.getElementById("color-sound");
-    sound.src = soundPaths[color] || "";
-    sound.play();
+    const sound = document.getElementById('color-sound');
+
+    // تحديد مسار الصوت بناءً على اللون
+    switch(color) {
+        case "red":
+            sound.src = "red.mp3"; // ضع المسار الصحيح هنا
+            break;
+        case "green":
+            sound.src = "green.mp3";
+            break;
+        case "blue":
+            sound.src = "blue.mp3";
+            break;
+        case "yellow":
+            sound.src = "yellow.mp3";
+            break;
+        case "purple":
+            sound.src = "purple.mp3";
+            break;
+        case "orange":
+            sound.src = "orange.mp3";
+            break;
+        case "pink":
+            sound.src = "pink.mp3";
+            break;
+        case "cyan":
+            sound.src = "cyan.mp3";
+            break;
+        default:
+            sound.src = "";
+    }
+
+    sound.play();  // تشغيل الصوت
 }
 
 function showColors() {
-    document.body.style.backgroundColor = "#f3f4f6";
-    document.getElementById("color-display").innerHTML = "";
+    // بعد انتهاء عرض الألوان، رجع المربعات
+    document.body.style.backgroundColor = "#f3f4f6";  // العودة للخلفية الأصلية
+    document.getElementById('color-display').innerHTML = "";  // إخفاء اسم اللون
     displayColorBoxes();
 }
 
 function displayColorBoxes() {
-    const colorBoxes = document.getElementById("colors-container");
-    const uniqueColors = [...new Set(colorSequence)];
-    const shuffledColors = shuffleArray(uniqueColors);
+    const colorBoxes = document.getElementById('colors-container');
+    const uniqueColors = [...new Set(colorSequence)]; // إزالة الألوان المتكررة
 
+    const shuffledColors = shuffleArray(uniqueColors); // خلط الألوان
+
+    // عرض المربعات بشكل عشوائي
     shuffledColors.forEach((color) => {
-        let box = document.createElement("div");
-        box.classList.add("color-box");
+        let box = document.createElement('div');
+        box.classList.add('color-box');
         box.style.backgroundColor = color;
-        box.setAttribute("data-color", color);
-        box.addEventListener("click", playerClick);
+        box.setAttribute('data-color', color);
+        box.addEventListener('click', playerClick);
         colorBoxes.appendChild(box);
     });
 }
 
 function shuffleArray(array) {
+    // دالة لخلط الألوان عشوائيًا
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        [array[i], array[j]] = [array[j], array[i]]; // تبادل العناصر
     }
     return array;
 }
@@ -91,20 +121,29 @@ function playerClick(event) {
     const clickedColor = event.target.style.backgroundColor;
     playerSequence.push(clickedColor);
 
+    // تشغيل الصوت عند اختيار اللون
     playColorSound(clickedColor);
 
+    // التحقق من تطابق اللون
     if (playerSequence[playerSequence.length - 1] !== colorSequence[playerSequence.length - 1]) {
-        showErrorMessage();
+        showErrorMessage();  // إظهار رسالة الخطأ
     } else if (playerSequence.length === colorSequence.length) {
-        setTimeout(nextRound, 1000);
+        setTimeout(nextRound, 1000);  // الانتقال للدور التالي بعد نجاح اللاعب
     }
 }
 
 function showErrorMessage() {
-    document.getElementById("error-message").style.display = "block";
+    // إظهار رسالة الخطأ
+    document.getElementById('error-message').style.display = 'block';
 }
 
 function retryGame() {
-    document.getElementById("error-message").style.display = "none";
+    // إعادة تشغيل اللعبة من البداية
+    document.getElementById('error-message').style.display = 'none';
     startGame();
+}
+
+function goToMainMenu() {
+    // العودة إلى الصفحة الرئيسية
+    alert("الرجوع إلى الصفحة الرئيسية...");
 }
