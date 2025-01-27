@@ -1,16 +1,24 @@
 /* استيراد الخط من Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+:root {
+    --main-bg-color: #f3f4f6;
+    --error-bg-color: #f44336;
+    --retry-bg-color: #4CAF50;
+    --menu-bg-color: #007BFF;
+    --text-color: #333;
+}
+
 body {
-    font-family: 'Roboto', sans-serif; /* استخدام الخط الذي تم استيراده */
-    background-color: #f3f4f6;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--main-bg-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     flex-direction: column;
     margin: 0;
-    color: #333;
+    color: var(--text-color);
     position: relative;
 }
 
@@ -37,18 +45,15 @@ body {
     font-weight: bold;
 }
 
-/* تأثير عند التمرير على المربعات */
 .color-box:hover {
     transform: scale(1.1);
     opacity: 1;
 }
 
-/* تأثير عند الضغط على المربع */
 .color-box:active {
     transform: scale(0.9);
 }
 
-/* عرض اسم اللون في المنتصف */
 #color-display {
     font-size: 30px;
     font-weight: bold;
@@ -59,13 +64,12 @@ body {
     transform: translate(-50%, -50%);
 }
 
-/* تصميم رسالة الخطأ */
 #error-message {
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #f44336;
+    background-color: var(--error-bg-color);
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -75,7 +79,6 @@ body {
     animation: shake 0.5s ease-in-out infinite;
 }
 
-/* أنيميشن الرسالة */
 @keyframes shake {
     0% { transform: translateX(-50%) rotate(0); }
     25% { transform: translateX(-60%) rotate(-5deg); }
@@ -84,7 +87,6 @@ body {
     100% { transform: translateX(-50%) rotate(0); }
 }
 
-/* تصميم الأزرار */
 .btn-retry, .btn-main-menu {
     padding: 10px 20px;
     font-size: 16px;
@@ -95,9 +97,8 @@ body {
     transition: background-color 0.3s;
 }
 
-/* زر اللعب مرة أخرى */
 .btn-retry {
-    background-color: #4CAF50;
+    background-color: var(--retry-bg-color);
     color: white;
 }
 
@@ -105,16 +106,15 @@ body {
     background-color: #45a049;
 }
 
-/* زر العودة للصفحة الرئيسية */
 .btn-main-menu {
-    background-color: #007BFF;
+    background-color: var(--menu-bg-color);
     color: white;
 }
 
 .btn-main-menu:hover {
     background-color: #0056b3;
 }
-/* Copyright Footer */
+
 footer {
     position: absolute;
     bottom: 10px;
@@ -123,4 +123,3 @@ footer {
     font-size: 14px;
     color: #555;
 }
-
