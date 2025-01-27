@@ -60,13 +60,13 @@ function playColorSound(color) {
             sound.src = "green.mp3";
             break;
         case "blue":
-            sound.src = "sounds/blue.mp3";
+            sound.src = "blue.mp3";
             break;
         case "yellow":
             sound.src = "yellow.mp3";
             break;
         case "purple":
-            sound.src = "sounds/purple.mp3";
+            sound.src = "purple.mp3";
             break;
         case "orange":
             sound.src = "orange.mp3";
