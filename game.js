@@ -54,28 +54,28 @@ function playColorSound(color) {
     // تحديد مسار الصوت بناءً على اللون
     switch(color) {
         case "red":
-            sound.src = "sounds/red.mp3"; // ضع المسار الصحيح هنا
+            sound.src = "red.mp3"; // ضع المسار الصحيح هنا
             break;
         case "green":
-            sound.src = "sounds/green.mp3";
+            sound.src = "green.mp3";
             break;
         case "blue":
             sound.src = "sounds/blue.mp3";
             break;
         case "yellow":
-            sound.src = "sounds/yellow.mp3";
+            sound.src = "yellow.mp3";
             break;
         case "purple":
             sound.src = "sounds/purple.mp3";
             break;
         case "orange":
-            sound.src = "sounds/orange.mp3";
+            sound.src = "orange.mp3";
             break;
         case "pink":
-            sound.src = "sounds/pink.mp3";
+            sound.src = "pink.mp3";
             break;
         case "cyan":
-            sound.src = "sounds/cyan.mp3";
+            sound.src = "cyan.mp3";
             break;
         default:
             sound.src = "";
